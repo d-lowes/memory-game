@@ -1,11 +1,15 @@
-/* you can add to or change this. */
 body {
   font-family: 'Permanent Marker', cursive;
   background-color: #efefef;
   color: rgb(0, 0, 0);
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
+
+/*** HOME PAGE CSS ***/
+
 
 .home-page {
   display: flex;
@@ -24,6 +28,17 @@ body {
   color:aquamarine;
 }
 
+.start-game-btn:hover {
+  cursor: pointer;
+  color: blueviolet;
+  font-size: 8vh;
+  text-decoration:solid;
+}
+
+
+/*** GAME PAGE CSS ***/
+
+
 .game-header {
   display: block;
   text-align: center;
@@ -32,19 +47,33 @@ body {
   color:rgb(0, 0, 0);
 }
 
-.start-game-btn:hover {
-  cursor: pointer;
-  color: blueviolet;
-  font-size: 8vh;
-  text-decoration:solid;
+#game {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  height: 1000px;
 }
 
 #game div {
-  border: 1px solid black;
-  width: 100px;
-  height: 100px;
-  margin: 20px;
-  display: inline-block;
+  border: 5px solid black;
+  width: 200px;
+  height: 200px;
+  margin: 20px 20px;
+  /* display: inline-block; */
+
 }
+
+#game div:hover {
+  cursor: pointer;
+  transform: scale(.9);
+  border: 5px solid red;
+}
+
+
+
+
 
 
