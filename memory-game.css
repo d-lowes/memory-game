@@ -1,4 +1,43 @@
 /* you can add to or change this. */
+body {
+  font-family: 'Permanent Marker', cursive;
+  background-color: #efefef;
+  color: rgb(0, 0, 0);
+  margin: 0;
+  padding: 0;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.start-game-btn {
+  display: flex;
+  font-size: 6vh;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  color:aquamarine;
+}
+
+.game-header {
+  display: block;
+  text-align: center;
+  margin: auto;
+  font-size: 6vh;
+  color:rgb(0, 0, 0);
+}
+
+.start-game-btn:hover {
+  cursor: pointer;
+  color: blueviolet;
+  font-size: 8vh;
+  text-decoration:solid;
+}
 
 #game div {
   border: 1px solid black;
@@ -7,3 +46,5 @@
   margin: 20px;
   display: inline-block;
 }
+
+
