@@ -28,10 +28,10 @@ function shuffle(items) {
  */
 
 function createCards(colors) {
+
   const gameBoard = document.getElementById("game");
 
   for (let color of colors) {
-
     let card = document.createElement('div');
     card.classList.add(color);
     gameBoard.appendChild(card);
@@ -61,6 +61,7 @@ function unFlipCard(card) {
 /** Handle clicking on a card: this could be first-card or second-card. */
 
 function handleCardClick(e) {
+
   let current = e.target;
 
   if (currentTurn) {
@@ -72,8 +73,6 @@ function handleCardClick(e) {
   }
 
   flipCard(current);
-
-  console.log(current.className);
 
   if (firstCard === undefined) {
     firstCard = current;
@@ -102,13 +101,3 @@ function handleCardClick(e) {
     }
   }
 }
-
-
-/* PSUEDO-CODE */
-/*
-when clicking a card, invoke the card click function
-change the card to the color of the background
-
-
-
-*/
