@@ -82,7 +82,11 @@ function handleCardClick(e) {
     score++;
   }
   if (firstCard && secondCard){
+
+    currentTurn = true;
+
     if ((firstCard.className) === (secondCard.className)) {
+
       firstCard.setAttribute('class', 'correct');
       secondCard.setAttribute('class', 'correct');
       firstCard.removeEventListener('click', handleCardClick);
@@ -90,7 +94,9 @@ function handleCardClick(e) {
       firstCard = undefined;
       secondCard = undefined;
       currentTurn = false;
+
     } else if (firstCard.className !== secondCard.className) {
+
       setTimeout(function() {
         unFlipCard(firstCard);
         unFlipCard(secondCard);
@@ -98,6 +104,7 @@ function handleCardClick(e) {
         secondCard = undefined;
         currentTurn = false;
       }, 1000);
+
     }
   }
 }
