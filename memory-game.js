@@ -49,7 +49,7 @@ let currentTurn = false;
 let matches = 0;
 
 
-/* Create local storage scoreboard */
+/* Create local storage scoreboard (work in progress)*/
 
 let score = 0;
 let lowestScore = localStorage.getItem("lowestScore");
@@ -113,18 +113,18 @@ function handleCardClick(e) {
     currentTurn = true;
 
     if ((firstCard.className) === (secondCard.className)) {
-
+      matches++;
       firstCard.removeEventListener('click', handleCardClick);
       secondCard.removeEventListener('click', handleCardClick);
       firstCard = undefined;
       secondCard = undefined;
       currentTurn = false;
-      matches++;
 
       // add delay so card gets colored before the prompt
       setTimeout(function() {
         if (matches === (colors.length/2)) {
-        alert(`GAME COMPLETE! Your score is ${score}`);
+        alert(`GAME COMPLETE! SCORE: ${score}`);
+        location.reload();
       }});
 
     } else if (firstCard.className !== secondCard.className) {
