@@ -122,10 +122,11 @@ function handleCardClick(e) {
       // add delay so card gets colored before the prompt
       setTimeout(function() {
         if (matches === (colors.length/2)) {
-        alert(`GAME COMPLETE! SCORE: ${score}`);
-        }
-        if(!alert(`GAME COMPLETE! SCORE: ${score}`)) {
-          window.location.reload();
+        // alert(`GAME COMPLETE! SCORE: ${score}`);
+        // }
+          if(!alert(`GAME COMPLETE! SCORE: ${score}`)) {
+            window.location.reload();
+          }
         }
       });
 
