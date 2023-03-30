@@ -124,8 +124,11 @@ function handleCardClick(e) {
       setTimeout(function() {
         if (matches === (colors.length/2)) {
         alert(`GAME COMPLETE! SCORE: ${score}`);
-        location.reload();
-      }});
+          if(!alert(`GAME COMPLETE! SCORE: ${score}`)) {
+            window.location.reload();
+          }
+        }
+      });
 
     } else if (firstCard.className !== secondCard.className) {
 
