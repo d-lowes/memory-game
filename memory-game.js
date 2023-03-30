@@ -52,23 +52,23 @@ let matches = 0;
 /* Create local storage scoreboard (work in progress)*/
 
 let score = 0;
-let lowestScore = localStorage.getItem("lowestScore");
+// let lowestScore = localStorage.getItem("lowestScore");
 
-if(lowestScore !== null){
-  if (score < lowestScore) {
-      localStorage.setItem("lowestScore", score);
-  }
-}
-else{
-  localStorage.setItem("lowestScore", score);
-}
+// if(lowestScore !== null){
+//   if (score < lowestScore) {
+//       localStorage.setItem("lowestScore", score);
+//   }
+// }
+// else{
+//   localStorage.setItem("lowestScore", score);
+// }
 
-scoreBoard();
+// scoreBoard();
 
-function scoreBoard(lowestScore) {
-  let scoreBoard = document.getElementById('score');
-  scoreBoard.appendChild(lowestScore);
-}
+// function scoreBoard(lowestScore) {
+//   let scoreBoard = document.getElementById('score');
+//   scoreBoard.appendChild(lowestScore);
+// }
 
 
 /** Flip a card face-up. */
@@ -88,6 +88,7 @@ function unFlipCard(card) {
 /** Handle clicking on a card: this could be first-card or second-card. */
 
 function handleCardClick(e) {
+  score++;
 
   let current = e.target;
 
@@ -103,10 +104,8 @@ function handleCardClick(e) {
 
   if (firstCard === undefined) {
     firstCard = current;
-    score++;
   } else if (secondCard === undefined) {
     secondCard = current;
-    score++;
   }
   if (firstCard && secondCard){
 
@@ -124,9 +123,9 @@ function handleCardClick(e) {
       setTimeout(function() {
         if (matches === (colors.length/2)) {
         alert(`GAME COMPLETE! SCORE: ${score}`);
-          if(!alert(`GAME COMPLETE! SCORE: ${score}`)) {
-            window.location.reload();
-          }
+        }
+        if(!alert(`GAME COMPLETE! SCORE: ${score}`)) {
+          window.location.reload();
         }
       });
 
