@@ -45,7 +45,7 @@ body {
   align-items: center;
   font-size: 6vh;
   color:rgb(0, 0, 0);
-  width: 1200px;
+  width: 800px;
 }
 
 #game {
@@ -54,15 +54,15 @@ body {
   margin: auto;
   justify-content: center;
   align-items: center;
-  width: 1200px;
-  height: 1200px;
+  width: 800px;
+  height: 800px;
 }
 
 #game div {
   border: 5px solid black;
-  width: 200px;
-  height: 200px;
-  margin: 20px 20px;
+  width: 150px;
+  height: 150px;
+  margin: 15px 15px;
 }
 
 #game div:hover {
@@ -70,6 +70,18 @@ body {
   transform: scale(1.2);
   border: 12px solid rgb(0, 0, 0);
   box-sizing: border-box;
+}
+
+
+/* work in progress: score board */
+#score {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 6vh;
+  color:rgb(0, 0, 0);
+  width: 1200px;
 }
 
 
