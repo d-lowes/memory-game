@@ -20,6 +20,7 @@ function shuffle(items) {
   return items;
 }
 
+
 /** Create card for every color in colors (each will appear twice)
  *
  * Each div DOM element will have:
@@ -40,11 +41,35 @@ function createCards(colors) {
 }
 
 
-// set variables
+/* Set card variables */
+
 let firstCard;
 let secondCard;
 let currentTurn = false;
+let matches = 0;
+
+
+/* Create local storage scoreboard */
+
 let score = 0;
+let lowestScore = localStorage.getItem("lowestScore");
+
+if(lowestScore !== null){
+  if (score < lowestScore) {
+      localStorage.setItem("lowestScore", score);
+  }
+}
+else{
+  localStorage.setItem("lowestScore", score);
+}
+
+scoreBoard();
+
+function scoreBoard(lowestScore) {
+  let scoreBoard = document.getElementById('score');
+  scoreBoard.appendChild(lowestScore);
+}
+
 
 /** Flip a card face-up. */
 
@@ -52,11 +77,13 @@ function flipCard(card) {
   card.style.backgroundColor = `${card.classList[0]}`;
 }
 
+
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
   card.style.backgroundColor = '';
 }
+
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
@@ -68,11 +95,11 @@ function handleCardClick(e) {
     return;
   }
 
-  if (current.classList.contains('correct')) {
+  flipCard(current);
+
+  if (current === firstCard) {
     return;
   }
-
-  flipCard(current);
 
   if (firstCard === undefined) {
     firstCard = current;
@@ -87,13 +114,18 @@ function handleCardClick(e) {
 
     if ((firstCard.className) === (secondCard.className)) {
 
-      firstCard.setAttribute('class', 'correct');
-      secondCard.setAttribute('class', 'correct');
       firstCard.removeEventListener('click', handleCardClick);
       secondCard.removeEventListener('click', handleCardClick);
       firstCard = undefined;
       secondCard = undefined;
       currentTurn = false;
+      matches++;
+
+      // add delay so card gets colored before the prompt
+      setTimeout(function() {
+        if (matches === (colors.length/2)) {
+        alert(`GAME COMPLETE! Your score is ${score}`);
+      }});
 
     } else if (firstCard.className !== secondCard.className) {
 
