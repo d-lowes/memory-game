@@ -1,6 +1,6 @@
 body {
   font-family: 'Permanent Marker', cursive;
-  background-color: #efefef;
+  background: radial-gradient(#efefef, #e3e2dc);
   color: rgb(0, 0, 0);
   margin: 0;
   padding: 0;
@@ -43,9 +43,10 @@ body {
   margin: auto;
   justify-content: center;
   align-items: center;
-  font-size: 6vh;
-  color:rgb(0, 0, 0);
+  font-size: 50px;
+  color: blueviolet;
   width: 800px;
+  height: 70px;
 }
 
 #game {
@@ -55,13 +56,13 @@ body {
   justify-content: center;
   align-items: center;
   width: 800px;
-  height: 800px;
+  height: 700px;
 }
 
 #game div {
   border: 5px solid black;
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   margin: 15px 15px;
 }
 
@@ -73,15 +74,24 @@ body {
 }
 
 
-/* work in progress: score board */
-#score {
+/* score board */
+
+.score-board {
   display: flex;
-  margin: auto;
-  justify-content: center;
   align-items: center;
-  font-size: 6vh;
+  justify-content: right;
+  font-size: 3vh;
   color:rgb(0, 0, 0);
-  width: 1200px;
+  width: 675px;
+  margin: auto;
+}
+
+#score {
+  color:rgb(39, 71, 60)
+}
+
+#lowest-score {
+  color:rgb(109, 208, 22)
 }
 
 
