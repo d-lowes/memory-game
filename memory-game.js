@@ -58,7 +58,7 @@ const scoreBoard = document.getElementsByClassName('score-board');
 const score = document.getElementById('score');
 const lowest = document.getElementById('lowest-score');
 score.innerHTML = `SCORE: `;
-lowest.innerHTML = `BEST SCORE: `
+lowest.innerHTML = `BEST SCORE: `;
 
 if (lowestScoreStored !== Infinity) {
   lowest.innerHTML = `BEST SCORE: ${lowestScoreStored}`;
