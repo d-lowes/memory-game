@@ -1,6 +1,5 @@
 "use strict";
 
-const FOUND_MATCH_WAIT_MSECS = 1000;
 const COLORS = [
   "red", "blue", "green", "orange", "purple", "grey", "yellow", "brown",
   "red", "blue", "green", "orange", "purple", "grey", "yellow", "brown"
@@ -21,12 +20,7 @@ function shuffle(items) {
 }
 
 
-/** Create card for every color in colors (each will appear twice)
- *
- * Each div DOM element will have:
- * - a class with the value of the color
- * - a click event listener for each card to handleCardClick
- */
+/* CREATE CARD FOR EACH COLOR */
 
 function createCards(colors) {
 
@@ -41,54 +35,69 @@ function createCards(colors) {
 }
 
 
-/* Set card variables */
+/* SET CARD VARIABLES */
 
 let firstCard;
 let secondCard;
 let currentTurn = false;
 let matches = 0;
+let scoreTotal = 0;
 
 
-/* Create local storage scoreboard (work in progress)*/
+/* CREATE SCOREBOARD WITH HIGH SCORE SAVED TO LOCAL STORAGE*/
 
-let score = 0;
-// let lowestScore = localStorage.getItem("lowestScore");
-
-// if(lowestScore !== null){
-//   if (score < lowestScore) {
-//       localStorage.setItem("lowestScore", score);
-//   }
-// }
-// else{
-//   localStorage.setItem("lowestScore", score);
-// }
-
-// scoreBoard();
-
-// function scoreBoard(lowestScore) {
-//   let scoreBoard = document.getElementById('score');
-//   scoreBoard.appendChild(lowestScore);
-// }
+let lowestScoreStored = localStorage.getItem("lowestScore");
 
 
-/** Flip a card face-up. */
+if (Number(lowestScoreStored) === 0) {
+  lowestScoreStored = Infinity;
+}
+
+
+const scoreBoard = document.getElementsByClassName('score-board');
+const score = document.getElementById('score');
+const lowest = document.getElementById('lowest-score');
+score.innerHTML = `SCORE: `;
+lowest.innerHTML = `BEST SCORE: `
+
+if (lowestScoreStored !== Infinity) {
+  lowest.innerHTML = `BEST SCORE: ${lowestScoreStored}`;
+}
+
+
+function saveScore() {
+
+  if(lowestScoreStored){
+    if (scoreTotal < Number(lowestScoreStored)) {
+        localStorage.setItem("lowestScore", scoreTotal);
+    }
+  }
+  else{
+    localStorage.setItem("lowestScore", scoreTotal);
+  }
+}
+
+
+/* FLIP CARD */
 
 function flipCard(card) {
   card.style.backgroundColor = `${card.classList[0]}`;
 }
 
 
-/** Flip a card face-down. */
+/* UN-FLIP CARD */
 
 function unFlipCard(card) {
   card.style.backgroundColor = '';
 }
 
 
-/** Handle clicking on a card: this could be first-card or second-card. */
+/* HANDLE CARD CLICKS */
 
 function handleCardClick(e) {
-  score++;
+  scoreTotal++;
+
+  score.innerHTML = `SCORE: ${scoreTotal}`;
 
   let current = e.target;
 
@@ -119,16 +128,17 @@ function handleCardClick(e) {
       secondCard = undefined;
       currentTurn = false;
 
-      // add delay so card gets colored before the prompt
+      /* ADD DELAY AFTER COMPLETED GAME TO ALLOW REFRESH */
+
       setTimeout(function() {
+
         if (matches === (colors.length/2)) {
-        // alert(`GAME COMPLETE! SCORE: ${score}`);
-        // }
-          if(!alert(`GAME COMPLETE! SCORE: ${score}`)) {
+          saveScore();
+          if(!alert(`Your score is ${scoreTotal}! Click OK to play again!`)) {
             window.location.reload();
           }
         }
-      });
+      }, 300);
 
     } else if (firstCard.className !== secondCard.className) {
 
@@ -138,7 +148,7 @@ function handleCardClick(e) {
         firstCard = undefined;
         secondCard = undefined;
         currentTurn = false;
-      }, 1000);
+      }, 1200);
 
     }
   }
