@@ -48,11 +48,9 @@ let scoreTotal = 0;
 
 let lowestScoreStored = localStorage.getItem("lowestScore");
 
-
 if (Number(lowestScoreStored) === 0) {
   lowestScoreStored = Infinity;
 }
-
 
 const scoreBoard = document.getElementsByClassName('score-board');
 const score = document.getElementById('score');
@@ -63,7 +61,6 @@ lowest.innerHTML = `BEST SCORE: `;
 if (lowestScoreStored !== Infinity) {
   lowest.innerHTML = `BEST SCORE: ${lowestScoreStored}`;
 }
-
 
 function saveScore() {
 
